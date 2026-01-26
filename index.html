@@ -1,0 +1,586 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dilworth Lab | Epigenetics & Regenerative Biology</title>
+  <meta name="description" content="The Dilworth Lab studies epigenetic regulation of stem cells and regeneration." />
+  <script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="assets/styles.css">
+  <style>
+    :root{
+      --bg: #0b1220;
+      --panel: rgba(255,255,255,.06);
+      --panel2: rgba(255,255,255,.09);
+      --text: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.72);
+      --line: rgba(255,255,255,.14);
+      --accent: #6ee7ff;
+      --accent2:#a78bfa;
+      --shadow: 0 18px 55px rgba(0,0,0,.45);
+      --radius: 18px;
+      --radius2: 24px;
+      --max: 1120px;
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color: var(--text);
+      background:
+        radial-gradient(1200px 700px at 12% 10%, rgba(110,231,255,.20), transparent 60%),
+        radial-gradient(900px 600px at 85% 30%, rgba(167,139,250,.20), transparent 62%),
+        radial-gradient(900px 600px at 55% 90%, rgba(34,197,94,.10), transparent 62%),
+        linear-gradient(180deg, #070b14, #0b1220 40%, #070b14);
+      overflow-x:hidden;
+    }
+
+    a{ color:inherit; text-decoration:none; }
+    a:hover{ text-decoration:underline; }
+
+
+    /* Sections */
+    .wrap{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 34px 18px 64px;
+    }
+
+    .hero{
+      display:grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 20px;
+      align-items:stretch;
+      margin-top: 10px;
+    }
+
+    @media (max-width: 980px){
+      .hero{ grid-template-columns: 1fr; }
+    }
+
+    .card{
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius2);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-text{
+      padding: 26px 24px;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .kicker{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      font-size: 13px;
+      color: var(--muted);
+      letter-spacing:.2px;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+    .dot{
+      width:10px; height:10px;
+      border-radius:99px;
+      background: radial-gradient(circle at 30% 30%, var(--accent), var(--accent2));
+      box-shadow: 0 0 20px rgba(110,231,255,.35);
+    }
+
+    h1{
+      margin: 0 0 10px;
+      font-size: clamp(30px, 3.6vw, 44px);
+      letter-spacing: -0.6px;
+      line-height: 1.06;
+    }
+    .lead{
+      margin: 0 0 18px;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.6;
+      max-width: 64ch;
+      text-align: center;
+    }
+
+    .hero-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap: 10px;
+      margin-top: 16px;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding: 10px 14px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.05);
+      color: var(--text);
+      font-size: 13px;
+      transition: transform .12s ease, background .12s ease, border-color .12s ease;
+    }
+    .btn:hover{
+      transform: translateY(-1px);
+      background: rgba(255,255,255,.08);
+      border-color: rgba(255,255,255,.22);
+      text-decoration:none;
+    }
+    .btn.primary{
+      border-color: rgba(110,231,255,.45);
+      background: linear-gradient(135deg, rgba(110,231,255,.18), rgba(167,139,250,.16));
+    }
+
+    .hero-media{
+      padding: 14px;
+      display:flex;
+      flex-direction:column;
+      gap: 12px;
+    }
+    .imgframe{
+      overflow:hidden;
+      border-radius: var(--radius2);
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.03);
+    }
+    .imgframe img{
+      width:100%;
+      height:auto;
+      display:block;
+    }
+    .caption{
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.45;
+      padding: 0 6px 6px;
+    }
+
+    .section{
+      margin-top: 28px;
+    }
+    .section-head{
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+    .section-head h2{
+      margin:0;
+      font-size: 18px;
+      letter-spacing:-.2px;
+    }
+    .section-head p{
+      margin:0;
+      color: var(--muted);
+      font-size: 13px;
+      max-width: 70ch;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 14px;
+    }
+
+    .panel{
+      padding: 18px 18px;
+      border-radius: var(--radius2);
+      border: 1px solid var(--line);
+      background: var(--panel);
+    }
+
+    .col-6{ grid-column: span 6; }
+    .col-4{ grid-column: span 4; }
+    .col-8{ grid-column: span 8; }
+    .col-12{ grid-column: span 12; }
+
+    @media (max-width: 980px){
+      .col-6,.col-4,.col-8{ grid-column: span 12; }
+    }
+
+    .panel h3{
+      margin:0 0 8px;
+      font-size: 15px;
+      letter-spacing: -.2px;
+    }
+    .panel p{
+      margin:0;
+      color: var(--muted);
+      line-height:1.65;
+      font-size: 14px;
+    }
+
+    .team{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 14px;
+    }
+    .person{
+      grid-column: span 4;
+      padding: 16px 16px;
+      border-radius: var(--radius2);
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.035));
+      transition: transform .12s ease, border-color .12s ease, background .12s ease;
+    }
+    .person:hover{
+      transform: translateY(-2px);
+      border-color: rgba(255,255,255,.22);
+      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
+    }
+    @media (max-width: 980px){
+      .person{ grid-column: span 12; }
+    }
+    .person .role{
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 6px;
+    }
+
+    .footer{
+      margin-top: 36px;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+      display:flex;
+      flex-wrap:wrap;
+      gap: 10px 18px;
+      align-items:center;
+      justify-content:space-between;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    /* Smooth scroll */
+    html{ scroll-behavior:smooth; }
+
+    /* Small helper */
+    .mono{
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 14px;
+      color: rgba(255,255,255,.78);
+      background: rgba(255,255,255,.05);
+      border: 1px solid var(--line);
+      padding: 2px 8px;
+      border-radius: 999px;
+    }
+  </style>
+</head>
+
+<body>
+<header class="sticky top-0 z-50 border-b border-slate-200/70 bg-white/80 backdrop-blur dark:border-slate-800/70 dark:bg-slate-950/80">
+  <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 md:py-5">
+
+    <!-- Brand -->
+    <a href="index.html#top" class="flex items-center gap-3">
+      <img
+  src="assets/DL-Logo.jpg"
+  alt="Dilworth Lab logo"
+  class="h-16 w-16 rounded-xl object-contain bg-white p-1 dark:bg-white"
+/>
+      <div class="leading-tight">
+        <div class="text-lg font-semibold tracking-tight md:text-xl">
+          Dilworth Lab
+        </div>
+        <div class="text-sm text-slate-600 dark:text-slate-300">
+          Epigenetics • Stem Cells • Regeneration | UW–Madison
+        </div>
+      </div>
+    </a>
+
+    <!-- Navigation -->
+    <nav class="hidden items-center gap-6 md:flex">
+      <a class="text-base text-slate-700 hover:text-slate-900 dark:text-slate-200 dark:hover:text-white" href="index.html">Research</a>
+      <a class="text-base text-slate-700 hover:text-slate-900 dark:text-slate-200 dark:hover:text-white" href="epigenetics.html">Epigenetics</a>
+      <a class="text-base text-slate-700 hover:text-slate-900 dark:text-slate-200 dark:hover:text-white" href="team.html">Team</a>
+      <a class="text-base font-semibold text-slate-900 dark:text-white" href="publications.html">Publications</a>
+      <a class="text-base font-semibold text-slate-900 dark:text-white" href="links.html">Links</a>
+      <a class="text-base text-slate-700 hover:text-slate-900 dark:text-slate-200 dark:hover:text-white" href="index.html#contact">Join</a>
+      <a class="text-base text-slate-700 hover:text-slate-900 dark:text-slate-200 dark:hover:text-white" href="index.html#contact">Contact</a>
+    </nav>
+
+    <!-- Theme toggle -->
+    <button id="themeBtn"
+      class="rounded-xl border border-slate-200 px-4 py-2 text-base hover:bg-slate-50 dark:border-slate-800 dark:hover:bg-slate-900"
+      aria-label="Toggle dark mode" type="button">
+      <span id="themeIcon" aria-hidden="true">🌙</span>
+    </button>
+
+  </div>
+</header>
+
+  <main class="wrap">
+    <!-- HERO -->
+    <section class="hero" id="top">
+      <div class="card hero-text">
+
+        <h1>Epigenetic regulation of stem cell-mediated tissue regeneration</h1><br
+        <p class="lead">
+          The Dilworth Lab studies how chromatin and epigenetic programs control cellular memory, stress adaptation,
+          and regenerative capacity with a focus on skeletal muscle biology and aging-related decline.
+        </p>
+
+  
+
+        <div style="margin-top:16px; display:flex; flex-wrap:wrap; gap:10px; justify-content: center; text-align: center;">
+          <span class="mono">Epigenetics</span>
+          <span class="mono">Chromatin</span>
+          <span class="mono">Gene Expression</span>
+          <span class="mono">Transcription</span>
+          <span class="mono">Myogenesis</span>
+        <span class="mono">Muscle Stem Cells</span>
+          <span class="mono">Regeneration</span>
+          <span class="mono">Aging</span>
+        </div><br/>
+        <div class="kicker"><span class="dot"></span> Exploiting the reversibility of epigenetics to improve regeneration</div>
+      </div>
+
+      <aside class="card hero-media">
+        <div class="imgframe">
+          <img
+            src="assets/nucleosome.jpg"
+            alt="Illustration of epigenetic tagging of DNA wrapped around histones"
+            loading="eager"
+          />
+        </div>
+        <div class="caption">
+          Epigenetic tags act like an editable “index” on DNA packaged around histones — enabling stable cellular identity
+          while remaining responsive to environmental stress.
+        </div>
+      </aside>
+    </section>
+
+    <!-- RESEARCH -->
+    <section class="section" id="research">
+      <div class="section-head">
+        <h1>Research Focus</h1>
+  
+      </div>
+
+      <div class="grid">
+        <div class="panel col-12 research-intro">
+  <h3>Overview</h3>
+  <p>
+    Our research is focused on how muscle stem cells work to regenerate muscle tissue and how the
+    environment they live in can influence their ability to repair muscle damage. This capacity to regenerate is necessary
+    to replace, grow and repair our skeletal muscle throughout our lives. When something goes wrong with the function of
+    these stem cells (called satellite cells), muscle tissue wastes away, which is the case for people suffering from
+    muscular dystrophies. And as we age, maintaining muscle mass becomes increasingly difficult, also a result of changes
+    in the effectiveness of our satellite cells. We are trying to address both of these areas by exploring how these stem
+    cells respond to epigenetic influences, and how we can modify the muscle environment in which these satellite cells live
+    to improve their regenerative function. We are continually expanding our understanding of the genes necessary to maintain
+    muscle stem cells in a healthy, functional state. The goal of the Dilworth Lab is to understand why the genes that maintain
+    stem cells in a healthy state sometimes get turned off and how we can use epigenetics to turn these genes back on, so our
+    satellite cells can function properly and effectively throughout our lifetime.
+  </p>
+</div>
+        <div class="panel col-4">
+          <h3>Cellular Memory & Identity</h3>
+          <p>
+            How chromatin states are written, maintained, and remodeled to specify long-lived cell programs across development
+            and in adult tissues.
+          </p>
+        </div>
+        <div class="panel col-4">
+          <h3>Stress Adaptation & Inflammation</h3>
+          <p>
+            How environmental signals reshape epigenetic landscapes, and when adaptive responses become maladaptive in disease
+            or aging.
+          </p>
+        </div>
+        <div class="panel col-4">
+          <h3>Regeneration & Aging</h3>
+          <p>
+            How epigenetic remodeling impacts stem cell activation and tissue repair — and how reversibility can be leveraged
+            to restore function.
+          </p>
+        </div>
+      </div>
+    </section>
+<!-- RESEARCH FIGURE -->
+<section class="section">
+  <div class="research-figure">
+    <img
+      src="assets/HoxcLocus.jpg"
+      alt="CUT&Tag analysis of RNA Polymerase II and histone modificationsat the Hoxc locus in differentiating muscle stem cells"
+      loading="lazy"
+    />
+    <div class="figure-caption">
+      CUT&amp;Tag analysis of RNA Polymerase II and histone modifications on the Hoxc locus in differentiating muscle stem cells
+      isolated from a tibialis anterior (TA) muscle.
+    </div>
+  </div>
+</section>
+  
+
+    <!-- JOIN -->
+    <section class="section" id="join">
+      <div class="section-head">
+        <h1>Join the lab</h1>
+      </div>
+
+      <div class="grid">
+        <div class="panel col-8">
+
+  <!-- Logo + heading row -->
+  <div style="
+    display:flex;
+    align-items:center;
+    gap:16px;
+    margin-bottom:12px;
+  ">
+    <img
+      src="assets/DL-Logo.jpg"
+      alt="Dilworth Lab logo"
+      style="
+        width:144px;
+        height:auto;
+        border-radius:16px;
+        background:#fff;
+        padding:6px;
+        box-shadow:0 8px 24px rgba(0,0,0,.15);
+        flex-shrink:0;
+      "
+    />
+
+  <p>
+    We’re interested in working with postdocs, graduate students, and undergraduates who want rigorous training in
+    chromatin biology and stem cell research. If you’re curious, send a brief note describing your interests and
+    experience, and include a CV.
+  </p>
+</div>
+</div>
+       <div class="panel col-4">
+  <h3>Quick links</h3>
+
+  <div class="quick-links">
+
+    <a class="quick-link"
+       href="https://crb.wisc.edu/staff/dilworth-jeffrey/"
+       target="_blank" rel="noreferrer">
+      <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M18 3h3v3"/>
+        <path d="M10 14L21 3"/>
+        <path d="M21 14v7H3V3h7"/>
+      </svg>
+      UW–Madison Profile
+    </a>
+
+    <a class="quick-link"
+       href="https://bsky.app/profile/epigeneticsmsn.bsky.social"
+       target="_blank" rel="noreferrer">
+      <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M12 2c2.8 2.6 6.7 7.3 7.4 8.7.7 1.4-.2 2.3-1.3 1.9-1.6-.5-4.3-2.8-6.1-4.5 0 0-.9-.8-1-.8s-1 .8-1 .8c-1.8 1.7-4.5 4-6.1 4.5-1.1.4-2-.5-1.3-1.9C5.3 9.3 9.2 4.6 12 2z"/>
+        <path d="M12 14c1.6 0 3.5.3 4.9 1.3 1.4 1 .8 2.8-.9 3.4-1.3.5-3.2.3-4-.2 0 0-.7-.4-.9-.4s-.9.4-.9.4c-.8.5-2.7.7-4 .2-1.7-.6-2.3-2.4-.9-3.4C8.5 14.3 10.4 14 12 14z"/>
+      </svg>
+      @epigeneticsmsn
+    </a>
+
+    <a class="quick-link"
+       href="https://x.com/epigeneticsyow"
+       target="_blank" rel="noreferrer">
+      <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M18.9 2H22l-7.4 8.4L23 22h-6.6l-5.2-6.8L5.4 22H2l7.9-9L1 2h6.7l4.7 6.2L18.9 2z"/>
+      </svg>
+      @epigeneticsyow
+    </a>
+
+    <a class="quick-link"
+       href="https://www.linkedin.com/in/jeff-dilworth-ba489a358"
+       target="_blank" rel="noreferrer">
+      <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M4.98 3.5a2.48 2.48 0 1 0 0 4.96 2.48 2.48 0 0 0 0-4.96zM3 8.98h3.96V21H3zM9.5 8.98H13v1.64h.05c.49-.92 1.7-1.9 3.5-1.9 3.74 0 4.43 2.46 4.43 5.65V21h-3.96v-5.27c0-1.26-.02-2.88-1.76-2.88-1.76 0-2.03 1.37-2.03 2.79V21H9.5z"/>
+      </svg>
+      LinkedIn
+    </a>
+
+  </div>
+</div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+  <div class="section-head">
+    <h1>Contact</h1>
+  </div>
+
+  <div class="grid">
+    <div class="panel col-12">
+
+      <!-- Flex container -->
+      <div class="contact-flex">
+        
+        <!-- TEXT -->
+        <div class="contact-text">
+          <h3>Dilworth Lab • UW–Madison</h3>
+          <p>
+            <strong>Email:</strong> <em>fdilworth@wisc.edu</em><br />
+            <strong>Address:</strong>
+            <em>
+              Department of Cell & Regenerative Biology<br />
+              1111 Highland Ave (WIMR II – Room 4518)<br />
+              Madison, WI 53705
+            </em><br />
+          </p>
+        </div>
+
+        <!-- IMAGE -->
+        <div class="contact-image">
+          <img
+            src="assets/wimr.jpg"
+            alt="WIMR Building at UW–Madison"
+            loading="lazy"
+          />
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div>© <span id="year"></span> Dilworth Lab. All rights reserved.</div>
+  </div>
+</section>
+
+  </main>
+
+ <script>
+(function () {
+  const root = document.documentElement;
+  const btn = document.getElementById("themeBtn");
+  const icon = document.getElementById("themeIcon");
+  const year = document.getElementById("year");
+  const key = "theme";
+
+  /* ---- Footer year (safe) ---- */
+  if (year) {
+    year.textContent = new Date().getFullYear();
+  }
+
+  /* ---- Theme init ---- */
+  const saved = localStorage.getItem(key) || "dark";
+  root.classList.toggle("dark", saved === "dark");
+
+  if (icon) {
+    icon.textContent = saved === "dark" ? "☀️" : "🌙";
+  }
+
+  /* ---- Toggle handler ---- */
+  if (btn) {
+    btn.addEventListener("click", () => {
+      const isDark = root.classList.toggle("dark");
+      localStorage.setItem(key, isDark ? "dark" : "light");
+
+      if (icon) {
+        icon.textContent = isDark ? "☀️" : "🌙";
+      }
+    });
+  }
+})();
+</script>
+</body>
+</html>

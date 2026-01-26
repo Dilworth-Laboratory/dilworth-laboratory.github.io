@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dilworth Lab | Epigenetics</title>
+  <meta name="description" content="Epigenetics, in plain language for the curious — Dilworth Lab." />
+
+  <!-- Tailwind (needed for your header classes) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { darkMode: 'class' }
+  </script>
+
+  <!-- Your site styles (wrap, panel, grid, etc.) -->
+  <link rel="stylesheet" href="assets/styles.css" />
+
+  <!-- Set theme ASAP to avoid flash -->
+  <script>
+    (function () {
+      const root = document.documentElement;
+      const saved = localStorage.getItem("theme");
+      const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+      const mode = saved ? saved : (prefersDark ? "dark" : "dark"); // default dark
+      if (mode === "dark") root.classList.add("dark");
+      else root.classList.remove("dark");
+    })();
+  </script>
+</head>
+
+<body>
+  <!-- HEADER -->
+  <header class="sticky top-0 z-50 border-b border-slate-200/70 bg-white/80 backdrop-blur dark:border-slate-800/70 dark:bg-slate-950/80">
+    <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 md:py-5">
+      <a href="index.html#top" class="flex items-center gap-3">
+        <img
+  src="assets/DL-Logo.jpg"
+  alt="Dilworth Lab logo"
+  class="h-16 w-16 rounded-xl object-contain bg-white p-1 dark:bg-white"
+/>
+        <div class="leading-tight">
+          <div class="text-lg font-semibold tracking-tight md:text-xl">Dilworth Lab</div>
+          <div class="text-sm text-slate-600 dark:text-slate-300">Epigenetics • Stem Cells • Regeneration | UW–Madison</div>
+        </div>
+      </a>
+
+      <nav class="hidden items-center gap-6 md:flex">
+        <a class="text-base text-slate-700 hover:text-slate-900 dark:text-slate-200 dark:hover:text-white" href="index.html">Research</a>
+        <a class="text-base font-semibold text-slate-900 dark:text-white" href="epigenetics.html">Epigenetics</a>
+        <a class="text-base text-slate-700 hover:text-slate-900 dark:text-slate-200 dark:hover:text-white" href="team.html">Team</a>
+        <a class="text-base text-slate-700 hover:text-slate-900 dark:text-slate-200 dark:hover:text-white" href="publications.html">Publications</a>
+        <a class="text-base text-slate-700 hover:text-slate-900 dark:text-slate-200 dark:hover:text-white" href="links.html">Links</a>
+        <a class="text-base text-slate-700 hover:text-slate-900 dark:text-slate-200 dark:hover:text-white" href="index.html#join">Join</a>
+        <a class="text-base text-slate-700 hover:text-slate-900 dark:text-slate-200 dark:hover:text-white" href="index.html#contact">Contact</a>
+      </nav>
+
+      <button
+        id="themeBtn"
+        class="rounded-xl border border-slate-200 px-4 py-2 text-base hover:bg-slate-50 dark:border-slate-800 dark:hover:bg-slate-900"
+        aria-label="Toggle dark mode"
+        type="button"
+      >
+        <span id="themeIcon" aria-hidden="true">🌙</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- CONTENT -->
+  <main class="wrap">
+    <section class="section" id="epigenetics">
+
+      <div class="grid" style="margin-top:14px;">
+        <div class="panel col-12 text-center">
+        <h1 style="margin:0;">What is Epigenetics?</h1><br/><p>
+            Epigenetics is the study of heritable changes to the cells of our body that occur without altering the genetic
+            code hardwired into our DNA.
+          </p>
+        </div>
+
+        <div class="panel col-6">
+          <h3>How does the epigenetic system work?</h3>
+          <p>
+            Our cellular epigenetic system is based on a chemical tagging process that indexes our packaged genome
+            (DNA spooled around histones), differentially marking genes that should be turned on and those that should be
+            shut down. At the heart of this epigenetic system are two groups of proteins – one group of proteins that act
+            to introduce chemical tags as well as an antagonizing group of proteins that remove the chemical tags.
+            The fact that any chemical tag put in place can also be removed makes the epigenetic system dynamic and reversible.
+          </p>
+        </div>
+
+        <div class="panel col-6">
+          <h3>How do our cells make use of epigenetics?</h3>
+          <p>
+            Epigenetic tags are present in all of our cells where they act as a cellular memory to catalogue genes that should
+            be expressed in different parts of the body. Throughout life, our cells undergo natural changes in the positioning
+            of these epigenetic tags within the genome to allow for growth, development, and learning. At the same time, the
+            positioning of epigenetic tags can also be influenced by environmental stresses, where the cell will epigenetically
+            tag a new set of genes in an effort to adapt to its changing milieu. This adaptive response to stresses can sometimes
+            lead to unfavorable changes in the positioning of epigenetic tags that contribute to disease and aging. Fortunately,
+            epigenetic tagging of our genome is reversible and an ability to specifically remove these unfavorable epigenetic tags
+            has the potential to improve health and quality of life for all of us.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="research-figure">
+        <img
+          src="assets/Epigenetics.jpg"
+          alt="Illustration showing epigenetic tags on DNA wrapped around histones in different physiological states"
+          loading="lazy"
+        />
+        <div class="figure-caption">
+          Epigenetic tags act like an editable “index” on DNA packaged around histones —
+          enabling stable cellular identity while remaining responsive to environmental stress.
+        </div>
+      </div>
+    </section>
+  <!-- ================= FOOTER ================= -->
+ <div class="footer">
+      <div>© <span id="year"></span> Dilworth Lab</div>
+      
+</main>
+  <!-- THEME TOGGLE -->
+  <script>
+    const root = document.documentElement;
+    const themeBtn = document.getElementById("themeBtn");
+    const themeIcon = document.getElementById("themeIcon");
+
+    function applyTheme(mode) {
+      const isDark = mode === "dark";
+      root.classList.toggle("dark", isDark);
+      themeIcon.textContent = isDark ? "☀️" : "🌙";
+      localStorage.setItem("theme", mode);
+    }
+
+    // set icon correctly on load
+    applyTheme(root.classList.contains("dark") ? "dark" : "light");
+
+    themeBtn.addEventListener("click", () => {
+      applyTheme(root.classList.contains("dark") ? "light" : "dark");
+    });
+  </script>
+</body>
+</html>

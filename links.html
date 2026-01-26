@@ -1,0 +1,383 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dilworth Lab | Useful Links</title>
+  <meta name="description" content="Useful links for conferences, societies, and protocols related to the Dilworth Lab." />
+<!-- Tailwind (needed for header classes) -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = { darkMode: 'class' }
+</script>
+  <!-- Your shared CSS (recommended) -->
+  <link rel="stylesheet" href="assets/styles.css" />
+
+  <!-- Minimal page-specific styles -->
+  <style>
+    /* If your styles.css already defines these, they’ll simply reuse them */
+    .page-title{
+      margin: 22px 0 8px;
+      font-size: clamp(28px, 3.2vw, 40px);
+      line-height: 1.1;
+      text-align: center;
+    }
+    .page-subtitle{
+      margin: 0 auto 22px;
+      max-width: 70ch;
+      text-align: center;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    .wrap{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 22px 18px 64px;
+    }
+
+    .links-grid{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 14px;
+      margin-top: 16px;
+    }
+
+    .links-card{
+      grid-column: span 6;
+      border-radius: var(--radius2);
+      border: 1px solid var(--line);
+      background: var(--panel);
+      box-shadow: var(--shadow);
+      padding: 18px;
+    }
+
+    @media (max-width: 980px){
+      .links-card{ grid-column: span 12; }
+    }
+
+    .links-card h2{
+      margin:0 0 10px;
+      font-size: 18px;
+      letter-spacing: -.2px;
+    }
+
+    .link-item{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap: 12px;
+      padding: 12px 12px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      margin-top: 10px;
+      transition: transform .12s ease, background .12s ease, border-color .12s ease;
+    }
+    .link-item:hover{
+      transform: translateY(-1px);
+      background: rgba(255,255,255,.06);
+      border-color: rgba(255,255,255,.18);
+    }
+
+    .link-item .meta{
+      display:flex;
+      flex-direction:column;
+      gap: 4px;
+      min-width: 0;
+    }
+    .link-item .name{
+      font-weight: 700;
+      line-height: 1.25;
+    }
+    .link-item .desc{
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.45;
+    }
+    .link-item a{
+      display:inline-flex;
+      align-items:center;
+      gap: 8px;
+      color: inherit;
+      text-decoration:none;
+      word-break: break-word;
+    }
+
+    .badge{
+      flex: 0 0 auto;
+      font-size: 12px;
+      color: var(--muted);
+      border: 1px solid var(--line);
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.04);
+      margin-top: 2px;
+      white-space: nowrap;
+    }
+
+    /* Header (matches your “pill” nav style) */
+    .nav{
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(12px);
+      background: rgba(7,11,20,.55);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav-inner{
+      max-width: var(--max);
+      margin:0 auto;
+      padding: 14px 18px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+    }
+    .brand{
+      display:flex;
+      flex-direction:column;
+      line-height:1.1;
+    }
+    .brand strong{ font-size: 16px; letter-spacing:.2px; }
+    .brand span{ font-size:13px; color:var(--muted); }
+
+    .nav-links{
+      display:flex;
+      flex-wrap:wrap;
+      gap: 10px;
+      align-items:center;
+      justify-content:flex-end;
+    }
+    .pill{
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.04);
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 13px;
+      color: var(--muted);
+      transition: transform .12s ease, background .12s ease, border-color .12s ease;
+      white-space:nowrap;
+      cursor: pointer;
+    }
+    .pill:hover{
+      background: rgba(255,255,255,.08);
+      border-color: rgba(255,255,255,.22);
+      transform: translateY(-1px);
+      color: var(--text);
+      text-decoration:none;
+    }
+    .pill.active{
+      color: var(--text);
+      border-color: rgba(110,231,255,.45);
+      background: linear-gradient(135deg, rgba(110,231,255,.16), rgba(167,139,250,.14));
+    }
+    .theme-btn{
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.04);
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 13px;
+      color: var(--muted);
+      cursor:pointer;
+    }
+    .theme-btn:hover{
+      background: rgba(255,255,255,.08);
+      color: var(--text);
+    }
+
+    .footer{
+      margin-top: 36px;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+      display:flex;
+      flex-wrap:wrap;
+      gap: 10px 18px;
+      align-items:center;
+      justify-content:space-between;
+      color: var(--muted);
+      font-size: 12px;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- HEADER -->
+  <header class="sticky top-0 z-50 border-b border-slate-200/70 bg-white/80 backdrop-blur dark:border-slate-800/70 dark:bg-slate-950/80">
+    <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 md:py-5">
+      <a href="index.html#top" class="flex items-center gap-3">
+        <img
+  src="assets/DL-Logo.jpg"
+  alt="Dilworth Lab logo"
+  class="h-16 w-16 rounded-xl object-contain bg-white p-1 dark:bg-white"
+/>
+        <div class="leading-tight">
+          <div class="text-lg font-semibold tracking-tight md:text-xl">Dilworth Lab</div>
+          <div class="text-sm text-slate-600 dark:text-slate-300">Epigenetics • Stem Cells • Regeneration | UW–Madison</div>
+        </div>
+      </a>
+
+      <nav class="hidden items-center gap-6 md:flex">
+        <a class="text-base text-slate-700 hover:text-slate-900 dark:text-slate-200 dark:hover:text-white" href="index.html">Research</a>
+        <a class="text-base font-semibold text-slate-900 dark:text-white" href="epigenetics.html">Epigenetics</a>
+        <a class="text-base text-slate-700 hover:text-slate-900 dark:text-slate-200 dark:hover:text-white" href="team.html">Team</a>
+        <a class="text-base text-slate-700 hover:text-slate-900 dark:text-slate-200 dark:hover:text-white" href="publications.html">Publications</a>
+        <a class="text-base text-slate-700 hover:text-slate-900 dark:text-slate-200 dark:hover:text-white" href="links.html">Links</a>
+        <a class="text-base text-slate-700 hover:text-slate-900 dark:text-slate-200 dark:hover:text-white" href="index.html#join">Join</a>
+        <a class="text-base text-slate-700 hover:text-slate-900 dark:text-slate-200 dark:hover:text-white" href="index.html#contact">Contact</a>
+      </nav>
+
+      <button
+        id="themeBtn"
+        class="rounded-xl border border-slate-200 px-4 py-2 text-base hover:bg-slate-50 dark:border-slate-800 dark:hover:bg-slate-900"
+        aria-label="Toggle dark mode"
+        type="button"
+      >
+        <span id="themeIcon" aria-hidden="true">🌙</span>
+      </button>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <h1 class="page-title">Useful Links</h1>
+    <p class="page-subtitle">
+      Quick access to conferences, societies, and lab protocols/resources relevant to epigenetics, muscle biology, and regeneration.
+    </p>
+
+    <section class="links-grid">
+      <!-- Conferences -->
+      <div class="links-card">
+        <h2>Conferences</h2>
+
+        <div class="link-item">
+          <div class="meta">
+            <div class="name">
+              <a href="https://www.aegeanconferences.org/src/App/conferences/view/189" target="_blank" rel="noreferrer">
+                Aegean Stem Cell Conference ↗
+              </a>
+            </div>
+            <div class="desc">Aegean Conferences meeting focused on stem cell biology and regenerative medicine.</div>
+          </div>
+          <div class="badge">Meeting</div>
+        </div>
+
+        <div class="link-item">
+          <div class="meta">
+            <div class="name">
+              <a href="https://musclebiology.org/2026-conference" target="_blank" rel="noreferrer">
+                Society for Muscle Biology • Frontiers Meeting ↗
+              </a>
+            </div>
+            <div class="desc">Annual SMB Frontiers conference featuring muscle development, disease, and regeneration.</div>
+          </div>
+          <div class="badge">Meeting</div>
+        </div>
+
+        <div class="conference-gallery">
+          <figure class="conference-image">
+            <img src="assets/AegeanTraineeAwards.jpg"
+                 alt="Aegean Conference Trainee Award Winners 2025"
+                 loading="lazy" />
+            <figcaption>Aegean Conference Trainee Award Winners 2025</figcaption>
+          </figure>
+
+          <figure class="conference-image">
+            <img src="assets/AegeanGroup.jpeg"
+                 alt="Aegean Conference Attendees at the 2025 Meeting in Sissi"
+                 loading="lazy" />
+            <figcaption>Aegean Conference Attendees at the 2025 Meeting in Sissi</figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <!-- Societies -->
+      <div class="links-card">
+        <h2>Societies</h2>
+
+        <div class="link-item">
+          <div class="meta">
+            <div class="name">
+              <a href="https://musclebiology.org" target="_blank" rel="noreferrer">
+                Society for Muscle Biology ↗
+              </a>
+            </div>
+            <div class="desc">Community and resources for muscle research, conferences, and training.</div>
+          </div>
+          <div class="badge">Society</div>
+        </div>
+
+        <div class="link-item">
+          <div class="meta">
+            <div class="name">
+              <a href="https://internationalsocietyforregenerativebiology.org" target="_blank" rel="noreferrer">
+                International Society for Regenerative Biology ↗
+              </a>
+            </div>
+            <div class="desc">International community for regenerative biology across tissues and model systems.</div>
+          </div>
+          <div class="badge">Society</div>
+        </div>
+      </div>
+
+      <!-- Protocols / Resources -->
+      <div class="links-card" style="grid-column: span 12;">
+        <h2>Protocols &amp; Resources</h2>
+
+        <div class="link-item">
+          <div class="meta">
+            <div class="name">
+              <a href="https://github.com/Dilworth-Laboratory" target="_blank" rel="noreferrer">
+                Dilworth Lab GitHub ↗
+              </a>
+            </div>
+            <div class="desc">Code, pipelines, and lab protocols (as available) maintained by the Dilworth Laboratory.</div>
+          </div>
+          <div class="badge">GitHub</div>
+        </div>
+      </div>
+    </section>
+
+    <div class="footer">
+      <div>© <span id="year"></span> Dilworth Lab</div>
+      <div>Last updated: <span id="updated"></span></div>
+    </div>
+  </main>
+
+  <script>
+    // Footer dates
+    document.getElementById("year").textContent = new Date().getFullYear();
+    document.getElementById("updated").textContent = new Date().toLocaleDateString();
+
+    // Theme toggle using the SAME mechanism as your CSS variables:
+    // - Light mode is :root (default)
+    // - Dark mode is html.dark (your styles.css)
+    const root = document.documentElement;
+    const btn = document.getElementById("themeBtn");
+    const icon = document.getElementById("themeIcon");
+
+    function setTheme(mode){
+      if (mode === "dark") {
+        root.classList.add("dark");
+        icon.textContent = "☀️";
+        localStorage.setItem("theme", "dark");
+      } else {
+        root.classList.remove("dark");
+        icon.textContent = "🌙";
+        localStorage.setItem("theme", "light");
+      }
+    }
+
+    const saved = localStorage.getItem("theme");
+    if (saved === "dark" || saved === "light") {
+      setTheme(saved);
+    } else {
+      setTheme("dark"); // default for this page (change to "light" if you prefer)
+    }
+
+    btn.addEventListener("click", () => {
+      setTheme(root.classList.contains("dark") ? "light" : "dark");
+    });
+  </script>
+</body>
+</html>
