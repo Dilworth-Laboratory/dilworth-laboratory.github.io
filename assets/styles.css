@@ -54,7 +54,10 @@ body{
     linear-gradient(180deg, rgba(7,11,20,.35), var(--bg) 40%, rgba(7,11,20,.25));
   overflow-x:hidden;
 }
-
+/* ✅ FORCE heading colors to follow theme */
+h1, h2, h3, h4, h5, h6{
+  color: var(--text);
+}
 a{ color: inherit; text-decoration:none; }
 a:hover{ text-decoration:none; }
 
