@@ -55,9 +55,8 @@ body{
   overflow-x:hidden;
 }
 /* ✅ FORCE heading colors to follow theme */
-h1, h2, h3, h4, h5, h6{
-  color: var(--text);
-}
+h1,h2,h3,h4,h5,h6{ color: var(--text) !important; }
+
 a{ color: inherit; text-decoration:none; }
 a:hover{ text-decoration:none; }
 
