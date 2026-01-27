@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Dilworth Lab | Useful Links</title>
   <meta name="description" content="Useful links for conferences, societies, and protocols related to the Dilworth Lab." />
-<!-- Tailwind (needed for header classes) -->
-<script src="https://cdn.tailwindcss.com"></script>
-<script>
-  tailwind.config = { darkMode: 'class' }
-</script>
+  <!-- Tailwind (needed for header classes) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { darkMode: 'class' }
+  </script>
   <!-- Your shared CSS (recommended) -->
   <link rel="stylesheet" href="assets/styles.css" />
 
@@ -202,16 +202,16 @@
   </style>
 </head>
 
-<body>
+<body class="min-h-screen bg-white text-slate-900 dark:bg-slate-950 dark:text-slate-50">
   <!-- HEADER -->
   <header class="sticky top-0 z-50 border-b border-slate-200/70 bg-white/80 backdrop-blur dark:border-slate-800/70 dark:bg-slate-950/80">
     <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 md:py-5">
       <a href="index.html#top" class="flex items-center gap-3">
         <img
-  src="assets/DL-Logo.jpg"
-  alt="Dilworth Lab logo"
-  class="h-16 w-16 rounded-xl object-contain bg-white p-1 dark:bg-white"
-/>
+          src="assets/DL-Logo.jpg"
+          alt="Dilworth Lab logo"
+          class="h-16 w-16 rounded-xl object-contain bg-white p-1 dark:bg-white"
+        />
         <div class="leading-tight">
           <div class="text-lg font-semibold tracking-tight md:text-xl">Dilworth Lab</div>
           <div class="text-sm text-slate-600 dark:text-slate-300">Epigenetics • Stem Cells • Regeneration | UW–Madison</div>
@@ -224,8 +224,8 @@
         <a class="text-base text-slate-700 hover:text-slate-900 dark:text-slate-200 dark:hover:text-white" href="team.html">Team</a>
         <a class="text-base text-slate-700 hover:text-slate-900 dark:text-slate-200 dark:hover:text-white" href="publications.html">Publications</a>
         <a class="text-base text-slate-700 hover:text-slate-900 dark:text-slate-200 dark:hover:text-white" href="links.html">Links</a>
-        <a class="text-base text-slate-700 hover:text-slate-900 dark:text-slate-200 dark:hover:text-white" href="index.html#join">Join</a>
-        <a class="text-base text-slate-700 hover:text-slate-900 dark:text-slate-200 dark:hover:text-white" href="index.html#contact">Contact</a>
+        <a class="text-base text-slate-700 hover:text-slate-900 dark:text-slate-200 dark:hover:text-white" href="team.html#join">Join</a>
+        <a class="text-base text-slate-700 hover:text-slate-900 dark:text-slate-200 dark:hover:text-white" href="team.html#contact">Contact</a>
       </nav>
 
       <button
@@ -246,6 +246,7 @@
     </p>
 
     <section class="links-grid">
+      
       <!-- Conferences -->
       <div class="links-card">
         <h2>Conferences</h2>
@@ -321,52 +322,54 @@
       </div>
 
       <!-- Protocols / Resources -->
-     <div class="links-card" style="grid-column: span 12;">
-  <h2>Protocols &amp; Resources</h2>
+      <div class="links-card" style="grid-column: span 12;">
+        <h2>Protocols &amp; Resources</h2>
 
-  <!-- GitHub -->
-  <div class="link-item">
-    <div class="meta">
-      <div class="name">
-        <a href="https://github.com/Dilworth-Laboratory" target="_blank" rel="noreferrer">
-          Dilworth Lab GitHub ↗
-        </a>
-      </div>
-      <div class="desc">
-        Code, pipelines, and lab protocols (as available) maintained by the Dilworth Laboratory.
-      </div>
-    </div>
-    <div class="badge">GitHub</div>
-  </div>
+        <!-- GitHub -->
+        <div class="link-item">
+          <div class="meta">
+            <div class="name">
+              <a href="https://github.com/Dilworth-Laboratory" target="_blank" rel="noreferrer">
+                Dilworth Lab GitHub ↗
+              </a>
+            </div>
+            <div class="desc">
+              Code, pipelines, and lab protocols (as available) maintained by the Dilworth Laboratory.
+            </div>
+          </div>
+          <div class="badge">GitHub</div>
+        </div>
 
-  <!-- Addgene -->
-  <div class="link-item">
-    <div class="meta">
-      <div class="name">
-        <a href="https://www.addgene.org/Jeffrey_Dilworth/" target="_blank" rel="noreferrer">
-          Dilworth Lab Addgene Repository ↗
-        </a>
+        <!-- Addgene -->
+        <div class="link-item">
+          <div class="meta">
+            <div class="name">
+              <a href="https://www.addgene.org/Jeffrey_Dilworth/" target="_blank" rel="noreferrer">
+                Dilworth Lab Addgene Repository ↗
+              </a>
+            </div>
+            <div class="desc">
+              Plasmids and molecular tools deposited by the Dilworth Laboratory and distributed via Addgene.
+            </div>
+          </div>
+          <div class="badge">Addgene</div>
+        </div>
       </div>
-      <div class="desc">
-        Plasmids and molecular tools deposited by the Dilworth Laboratory and distributed via Addgene.
-      </div>
-    </div>
-    <div class="badge">Addgene</div>
-  </div>
 
-</div>
     </section>
 
     <div class="footer">
-      <div>© <span id="year"></span> Dilworth Lab</div>
-      <div>Last updated: <span id="updated"></span></div>
+      <div>© <span id="year"></span> Dilworth Lab. All rights reserved.</div>
     </div>
+    
   </main>
 
   <script>
+    
     // Footer dates
-    document.getElementById("year").textContent = new Date().getFullYear();
-    document.getElementById("updated").textContent = new Date().toLocaleDateString();
+    //document.getElementById("year").textContent = new Date().getFullYear();
+    //document.getElementById("updated").textContent = new Date().toLocaleDateString();
+    
 
     // Theme toggle using the SAME mechanism as your CSS variables:
     // - Light mode is :root (default)

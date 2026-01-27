@@ -28,16 +28,16 @@
   </script>
 </head>
 
-<body>
+<body class="min-h-screen bg-white text-slate-900 dark:bg-slate-950 dark:text-slate-50">
   <!-- HEADER -->
   <header class="sticky top-0 z-50 border-b border-slate-200/70 bg-white/80 backdrop-blur dark:border-slate-800/70 dark:bg-slate-950/80">
     <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 md:py-5">
       <a href="index.html#top" class="flex items-center gap-3">
         <img
-  src="assets/DL-Logo.jpg"
-  alt="Dilworth Lab logo"
-  class="h-16 w-16 rounded-xl object-contain bg-white p-1 dark:bg-white"
-/>
+          src="assets/DL-Logo.jpg"
+          alt="Dilworth Lab logo"
+          class="h-16 w-16 rounded-xl object-contain bg-white p-1 dark:bg-white"
+        />
         <div class="leading-tight">
           <div class="text-lg font-semibold tracking-tight md:text-xl">Dilworth Lab</div>
           <div class="text-sm text-slate-600 dark:text-slate-300">Epigenetics • Stem Cells • Regeneration | UW–Madison</div>
@@ -50,16 +50,15 @@
         <a class="text-base text-slate-700 hover:text-slate-900 dark:text-slate-200 dark:hover:text-white" href="team.html">Team</a>
         <a class="text-base text-slate-700 hover:text-slate-900 dark:text-slate-200 dark:hover:text-white" href="publications.html">Publications</a>
         <a class="text-base text-slate-700 hover:text-slate-900 dark:text-slate-200 dark:hover:text-white" href="links.html">Links</a>
-        <a class="text-base text-slate-700 hover:text-slate-900 dark:text-slate-200 dark:hover:text-white" href="index.html#join">Join</a>
-        <a class="text-base text-slate-700 hover:text-slate-900 dark:text-slate-200 dark:hover:text-white" href="index.html#contact">Contact</a>
+        <a class="text-base text-slate-700 hover:text-slate-900 dark:text-slate-200 dark:hover:text-white" href="team.html#join">Join</a>
+        <a class="text-base text-slate-700 hover:text-slate-900 dark:text-slate-200 dark:hover:text-white" href="team.html#contact">Contact</a>
       </nav>
 
       <button
         id="themeBtn"
         class="rounded-xl border border-slate-200 px-4 py-2 text-base hover:bg-slate-50 dark:border-slate-800 dark:hover:bg-slate-900"
         aria-label="Toggle dark mode"
-        type="button"
-      >
+        type="button">
         <span id="themeIcon" aria-hidden="true">🌙</span>
       </button>
     </div>
@@ -71,7 +70,8 @@
 
       <div class="grid" style="margin-top:14px;">
         <div class="panel col-12 text-center">
-        <h1 style="margin:0;">What is Epigenetics?</h1><br/><p>
+        <h1 style="margin:0;">What is Epigenetics?</h1><br/>
+          <p>
             Epigenetics is the study of heritable changes to the cells of our body that occur without altering the genetic
             code hardwired into our DNA.
           </p>
@@ -116,12 +116,13 @@
           enabling stable cellular identity while remaining responsive to environmental stress.
         </div>
       </div>
+
+      <div class="footer">
+        <div>© <span id="year"></span> Dilworth Lab. All rights reserved.</div>
+      </div>
     </section>
-  <!-- ================= FOOTER ================= -->
- <div class="footer">
-      <div>© <span id="year"></span> Dilworth Lab</div>
-      
-</main>
+  </main>
+
   <!-- THEME TOGGLE -->
   <script>
     const root = document.documentElement;
