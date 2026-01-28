@@ -260,6 +260,8 @@ h1{
 }
 
 .person{
+  column-gap: 20px;
+  overflow: hidden;        /* clip anything that might overflow */
   padding: 20px;
   border-radius: var(--radius2);
   border: 1px solid var(--line);
@@ -270,6 +272,28 @@ h1{
   transform: translateY(-2px);
   border-color: rgba(255,255,255,.22);
   background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
+}
+
+.person-header {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+}
+
+.person-description{
+  grid-column: 2;
+  grid-row: 1;
+  font-size: 16px;
+  line-height: 1.5;
+  margin-left: 1.5rem;
+  place-self: center; 
+}
+
+/* Stack photo/name above description on narrow screens */
+@media (max-width: 600px){
+  .person-inner{
+    grid-template-columns: 1fr;
+    row-gap: 12px;
+  }
 }
 
 /* avatar size (change these two numbers to grow/shrink headshots) */
@@ -290,17 +314,22 @@ h1{
   display:block;
 }
 
-.person-name{
+.person-name {
   font-size: 18px;
   margin-top: 10px;
   font-weight: 700;
   line-height: 1.2;
 }
+
 .person .role{
   font-size: 16px;
   margin-top: 4px;
   line-height: 1.2;
   color: var(--muted);
+}
+
+.person-tag {
+  grid-column: 1 / -1;
 }
 
 /* group photo block */
