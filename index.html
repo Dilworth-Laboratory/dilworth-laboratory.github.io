@@ -321,7 +321,7 @@
         </div>
       </a>
 
-      <!-- Navigation -->
+      <!-- Desktop nav -->
       <nav class="hidden items-center gap-6 md:flex">
         <a class="text-base font-semibold text-slate-900 dark:text-white" href="index.html">Research</a>
         <a class="text-base text-slate-700 hover:text-slate-900 dark:text-slate-200 dark:hover:text-white" href="epigenetics.html">Epigenetics</a>
@@ -332,16 +332,49 @@
         <a class="text-base text-slate-700 hover:text-slate-900 dark:text-slate-200 dark:hover:text-white" href="team.html#contact">Contact</a>
       </nav>
 
-      <!-- Theme toggle -->
-      <button 
-        id="themeBtn"
-        class="rounded-xl border border-slate-200 px-4 py-2 text-base hover:bg-slate-50 dark:border-slate-800 dark:hover:bg-slate-900"
-        aria-label="Toggle dark mode" 
-        type="button">
-        <span id="themeIcon" aria-hidden="true">🌙</span>
-      </button>
+      <div class="flex items-center gap-3">
+        <!-- Theme toggle -->
+        <button 
+          id="themeBtn"
+          class="rounded-xl border border-slate-200 px-4 py-2 text-base hover:bg-slate-50 dark:border-slate-800 dark:hover:bg-slate-900"
+          aria-label="Toggle dark mode" 
+          type="button">
+          <span id="themeIcon" aria-hidden="true">🌙</span>
+        </button>
 
+        <!-- Mobile hamburger -->
+        <button
+          id="menuToggle"
+          class="ml-1 inline-flex items-center justify-center rounded-lg p-2 text-slate-700 hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-slate-400 md:hidden dark:text-slate-200 dark:hover:bg-slate-900"
+          aria-label="Toggle navigation menu"
+          aria-expanded="false"
+          type="button">
+          <!-- Icon: 3 bars -->
+          <svg id="menuIconOpen" class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+          <!-- Icon: X (hidden by default) -->
+          <svg id="menuIconClose" class="hidden h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 6l12 12M6 18L18 6" />
+          </svg>
+        </button>
+      </div>
     </div>
+
+    <!-- Mobile dropdown nav -->
+    <nav
+      id="mobileMenu"
+      class="hidden border-t border-slate-200 bg-white/95 px-4 pb-4 pt-2 text-base md:hidden dark:border-slate-800 dark:bg-slate-950/95">
+      <div class="mx-auto flex max-w-6xl flex-col gap-2">
+        <a class="font-semibold text-slate-900 dark:text-white" href="index.html">Research</a>
+        <a class="text-slate-700 dark:text-slate-200" href="epigenetics.html">Epigenetics</a>
+        <a class="text-slate-700 dark:text-slate-200" href="team.html">Team</a>
+        <a class="text-slate-700 dark:text-slate-200" href="publications.html">Publications</a>
+        <a class="text-slate-700 dark:text-slate-200" href="links.html">Links</a>
+        <a class="text-slate-700 dark:text-slate-200" href="team.html#join">Join</a>
+        <a class="text-slate-700 dark:text-slate-200" href="team.html#contact">Contact</a>
+      </div>
+    </nav>
   </header>
 
   <main class="wrap">
@@ -457,6 +490,11 @@
     const themeIcon = document.getElementById("themeIcon");
     const year = document.getElementById("year");
 
+    const menuToggle = document.getElementById("menuToggle");
+    const mobileMenu = document.getElementById("mobileMenu");
+    const menuIconOpen = document.getElementById("menuIconOpen");
+    const menuIconClose = document.getElementById("menuIconClose");
+
     if (year) {
       year.textContent = new Date().getFullYear();
     }
@@ -470,12 +508,23 @@
       localStorage.setItem("theme", mode);
     }
 
-    // set icon correctly on load (class already set by the early script)
+    // initial: class may be set by early script (if present)
     applyTheme(root.classList.contains("dark") ? "dark" : "light");
 
     if (themeBtn) {
       themeBtn.addEventListener("click", () => {
         applyTheme(root.classList.contains("dark") ? "light" : "dark");
+      });
+    }
+
+    // Mobile menu toggle
+    if (menuToggle && mobileMenu && menuIconOpen && menuIconClose) {
+      menuToggle.addEventListener("click", () => {
+        const isOpen = !mobileMenu.classList.contains("hidden");
+        mobileMenu.classList.toggle("hidden", isOpen);
+        menuIconOpen.classList.toggle("hidden", !isOpen);
+        menuIconClose.classList.toggle("hidden", isOpen);
+        menuToggle.setAttribute("aria-expanded", String(!isOpen));
       });
     }
   </script>

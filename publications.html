@@ -13,6 +13,18 @@
   </script>
   <!-- Shared site styles -->
   <link rel="stylesheet" href="assets/styles.css">
+
+  <script>
+    (function () {
+      const root = document.documentElement;
+      const saved = localStorage.getItem("theme");
+      const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+      const mode = saved ? saved : (prefersDark ? "dark" : "dark"); // default dark
+      if (mode === "dark") root.classList.add("dark");
+      else root.classList.remove("dark");
+    })();
+  </script>
+
 </head>
 
 <body class="min-h-screen bg-white text-slate-900 dark:bg-slate-950 dark:text-slate-50">
@@ -29,14 +41,16 @@
           class="h-16 w-16 rounded-xl object-contain bg-white p-1 dark:bg-white"
         />
         <div class="leading-tight">
-          <div class="text-lg font-semibold tracking-tight md:text-xl">Dilworth Lab</div>
+          <div class="text-lg font-semibold tracking-tight md:text-xl">
+            Dilworth Lab
+          </div>
           <div class="text-sm text-slate-600 dark:text-slate-300">
             Epigenetics • Stem Cells • Regeneration | UW–Madison
           </div>
         </div>
       </a>
 
-      <!-- Navigation -->
+      <!-- Desktop nav -->
       <nav class="hidden items-center gap-6 md:flex">
         <a class="text-base text-slate-700 hover:text-slate-900 dark:text-slate-200 dark:hover:text-white" href="index.html">Research</a>
         <a class="text-base text-slate-700 hover:text-slate-900 dark:text-slate-200 dark:hover:text-white" href="epigenetics.html">Epigenetics</a>
@@ -47,20 +61,55 @@
         <a class="text-base text-slate-700 hover:text-slate-900 dark:text-slate-200 dark:hover:text-white" href="team.html#contact">Contact</a>
       </nav>
 
-      <!-- Theme toggle -->
-      <button id="themeBtn"
-        class="rounded-xl border border-slate-200 px-4 py-2 text-base hover:bg-slate-50 dark:border-slate-800 dark:hover:bg-slate-900"
-        aria-label="Toggle dark mode" type="button">
-        <span id="themeIcon">🌙</span>
-      </button>
+      <div class="flex items-center gap-3">
+        <!-- Theme toggle -->
+        <button 
+          id="themeBtn"
+          class="rounded-xl border border-slate-200 px-4 py-2 text-base hover:bg-slate-50 dark:border-slate-800 dark:hover:bg-slate-900"
+          aria-label="Toggle dark mode" 
+          type="button">
+          <span id="themeIcon" aria-hidden="true">🌙</span>
+        </button>
 
+        <!-- Mobile hamburger -->
+        <button
+          id="menuToggle"
+          class="ml-1 inline-flex items-center justify-center rounded-lg p-2 text-slate-700 hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-slate-400 md:hidden dark:text-slate-200 dark:hover:bg-slate-900"
+          aria-label="Toggle navigation menu"
+          aria-expanded="false"
+          type="button">
+          <!-- Icon: 3 bars -->
+          <svg id="menuIconOpen" class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+          <!-- Icon: X (hidden by default) -->
+          <svg id="menuIconClose" class="hidden h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 6l12 12M6 18L18 6" />
+          </svg>
+        </button>
+      </div>
     </div>
+
+    <!-- Mobile dropdown nav -->
+    <nav
+      id="mobileMenu"
+      class="hidden border-t border-slate-200 bg-white/95 px-4 pb-4 pt-2 text-base md:hidden dark:border-slate-800 dark:bg-slate-950/95">
+      <div class="mx-auto flex max-w-6xl flex-col gap-2">
+        <a class="text-slate-700 dark:text-slate-200" href="index.html">Research</a>
+        <a class="text-slate-700 dark:text-slate-200" href="epigenetics.html">Epigenetics</a>
+        <a class="text-slate-700 dark:text-slate-200" href="team.html">Team</a>
+        <a class="font-semibold text-slate-900 dark:text-white" href="publications.html">Publications</a>
+        <a class="text-slate-700 dark:text-slate-200" href="links.html">Links</a>
+        <a class="text-slate-700 dark:text-slate-200" href="team.html#join">Join</a>
+        <a class="text-slate-700 dark:text-slate-200" href="team.html#contact">Contact</a>
+      </div>
+    </nav>
   </header>
 
   <!-- ================= MAIN ================= -->
   <main class="mx-auto max-w-6xl px-6 py-12">
 
-    <h1 class="text-3xl font-semibold tracking-tight">Publications</h1>
+    <h1>Publications</h1>
     <p class="mt-3 max-w-3xl text-slate-700 dark:text-slate-200">
       Selected publications from the Dilworth Lab. For the full list, see the NCBI bibliography below.
     </p>
@@ -74,15 +123,18 @@
 
         <ol class="mt-4 space-y-3">
           <li class="rounded-xl bg-slate-50 p-4 dark:bg-slate-900/40">
+            <a href="https://doi.org/10.1093/nar/gkae600" target="_blank" rel="noreferrer">
             M. M-K. Wong, S. Hachmer, E. Gardner, V. Runfola, E. Arezza, L. Megeney,
             C.P. Emerson Jr., D. Gabellini, and F.J. Dilworth.
             <span class="font-medium">
               SMCHD1 activates the expression of genes required for the expansion of human myoblasts.
             </span>
             <em>Nucleic Acids Research</em> 52: 9450–9456, 2024.
+            </a>
           </li>
 
           <li class="rounded-xl bg-slate-50 p-4 dark:bg-slate-900/40">
+            <a href="https://doi.org/10.1126/science.abm9735" target="_blank" rel="noreferrer">
             K. Nakka, S. Hachmer, Z. Mokhtari, R. Kovac, H. Bandukwala, C. Bernard,
             Y. Li, G. Xie, C. Liu, M. Fahalli, L. Megeney, J. Gondin, B. Chazaud,
             M. Brand, X. Zha, K. Ge, and F.J. Dilworth.
@@ -90,9 +142,11 @@
               JMJD3 activated hyaluronan synthesis drives muscle regeneration in an inflammatory environment.
             </span>
             <em>Science</em> 377: 666–669, 2022.
+            </a>
           </li>
 
           <li class="rounded-xl bg-slate-50 p-4 dark:bg-slate-900/40">
+            <a href="https://doi.org/10.1016/j.devcel.2021.02.025" target="_blank" rel="noreferrer">
             D. Robinson, M. Ritso, G. Nelson, Z. Mokhtari, K. Nakka, H. Bandukwala,
             S. Goldman, P. Park, R. Mounier, B. Chazaud, M. Brand, M. Rudnicki,
             K. Adelman, F.J. Dilworth.
@@ -100,23 +154,28 @@
               Negative elongation factor regulates muscle progenitor expansion.
             </span>
             <em>Dev Cell</em> 56: 1014–1029, 2021.
+            </a>
           </li>
 
           <li class="rounded-xl bg-slate-50 p-4 dark:bg-slate-900/40">
+            <a href="https://doi.org/10.1016/j.stem.2019.03.005" target="_blank" rel="noreferrer">
             M. Brand, K. Nakka, J. Zhu, and F.J. Dilworth.
             <span class="font-medium">
               Polycomb/Trithorax Antagonism: Cellular Memory in Stem Cell Fate and Function.
             </span>
             <em>Cell Stem Cell</em> 4: 518–533, 2019.
+            </a>
           </li>
 
           <li class="rounded-xl bg-slate-50 p-4 dark:bg-slate-900/40">
+            <a href="https://doi.org/10.1172/JCI83239" target="_blank" rel="noreferrer">
             H. Faralli, C. Wang, A. Benyoucef, S. Sebastian, L. Zhuang, A. Chu,
             C. Palii, C. Liu, B. Camellato, M. Brand, K. Ge, and F.J. Dilworth.
             <span class="font-medium">
               H3K27-demethylase activity of UTX/KDM6A is essential for skeletal muscle regeneration.
             </span>
             <em>J Clin Invest</em> 126: 1555–1565, 2016.
+            </a>
           </li>
         </ol>
       </div>
@@ -141,27 +200,49 @@
     </section>
   </main>
 
-  <!-- ================= SCRIPTS ================= -->
   <script>
     const root = document.documentElement;
-    const btn = document.getElementById("themeBtn");
-    const icon = document.getElementById("themeIcon");
+    const themeBtn = document.getElementById("themeBtn");
+    const themeIcon = document.getElementById("themeIcon");
+    const year = document.getElementById("year");
 
-    function setTheme(theme){
-      root.classList.toggle("dark", theme === "dark");
-      localStorage.setItem("theme", theme);
-      icon.textContent = theme === "dark" ? "☀️" : "🌙";
+    const menuToggle = document.getElementById("menuToggle");
+    const mobileMenu = document.getElementById("mobileMenu");
+    const menuIconOpen = document.getElementById("menuIconOpen");
+    const menuIconClose = document.getElementById("menuIconClose");
+
+    if (year) {
+      year.textContent = new Date().getFullYear();
     }
 
-    const saved = localStorage.getItem("theme")
-      || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
-    setTheme(saved);
+    function applyTheme(mode) {
+      const isDark = mode === "dark";
+      root.classList.toggle("dark", isDark);
+      if (themeIcon) {
+        themeIcon.textContent = isDark ? "☀️" : "🌙";
+      }
+      localStorage.setItem("theme", mode);
+    }
 
-    btn.addEventListener("click", () =>
-      setTheme(root.classList.contains("dark") ? "light" : "dark")
-    );
+    // initial: class may be set by early script (if present)
+    applyTheme(root.classList.contains("dark") ? "dark" : "light");
 
-    document.getElementById("year").textContent = new Date().getFullYear();
+    if (themeBtn) {
+      themeBtn.addEventListener("click", () => {
+        applyTheme(root.classList.contains("dark") ? "light" : "dark");
+      });
+    }
+
+    // Mobile menu toggle
+    if (menuToggle && mobileMenu && menuIconOpen && menuIconClose) {
+      menuToggle.addEventListener("click", () => {
+        const isOpen = !mobileMenu.classList.contains("hidden");
+        mobileMenu.classList.toggle("hidden", isOpen);
+        menuIconOpen.classList.toggle("hidden", !isOpen);
+        menuIconClose.classList.toggle("hidden", isOpen);
+        menuToggle.setAttribute("aria-expanded", String(!isOpen));
+      });
+    }
   </script>
 
 </body>
