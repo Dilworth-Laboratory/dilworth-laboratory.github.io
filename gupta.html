@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dilworth Lab | Adity Gupta</title>
+  <meta name="description" content="Profile page for Adity Gupta — Dilworth Lab, UW–Madison." />
+
+  <!-- Tailwind (needed for header classes) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script> tailwind.config = { darkMode: 'class' } </script>
+
+  <!-- Shared site CSS -->
+  <link rel="stylesheet" href="assets/styles.css" />
+
+  <!-- Set theme ASAP to avoid flash -->
+  <script>
+    (function () {
+      const root = document.documentElement;
+      const saved = localStorage.getItem("theme");
+      const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+      const mode = saved ? saved : (prefersDark ? "dark" : "dark"); // default dark
+      root.classList.toggle("dark", mode === "dark");
+    })();
+  </script>
+
+  <!-- Minimal page-specific styles -->
+  <style>
+    .wrap{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 22px 18px 64px;
+    }
+
+    /* Top heading area (above photo) */
+    .profile-heading{
+      margin-top: 18px;
+      text-align: left;
+    }
+    .name-title{
+      margin: 0 0 6px;
+      font-size: clamp(26px, 3vw, 34px);
+      line-height: 1.1;
+      color: var(--text);
+    }
+    .subtitle{
+      margin: 0 0 14px;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.55;
+      max-width: 90ch;
+    }
+
+    /* Photo + project start at same height */
+    .profile-grid{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 14px;
+      align-items:start;
+      margin-top: 14px;
+    }
+    .photo-col{ grid-column: span 3; }
+    .project-col{ grid-column: span 9; }
+
+    @media (max-width: 980px){
+      .photo-col, .project-col{ grid-column: span 12; }
+    }
+
+    .headshot{
+      width: 100%;
+      max-width: 260px;
+      aspect-ratio: 1 / 1;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.06);
+      overflow:hidden;
+      box-shadow: var(--shadow);
+    }
+    .headshot img{
+      width:100%;
+      height:100%;
+      object-fit: cover;
+      display:block;
+    }
+
+    /* Card styling */
+    .card{
+      border-radius: var(--radius2);
+      border: 1px solid var(--line);
+      background: var(--panel);
+      box-shadow: var(--shadow);
+      padding: 18px;
+    }
+    .card p{
+      margin: 0;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.65;
+    }
+    .section-title{
+      margin: 0 0 10px;
+      font-size: 18px;
+      letter-spacing: -.2px;
+      color: var(--text);
+    }
+
+    /* Publications + Patent full width stacked */
+    .stack{
+      margin-top: 14px;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+
+    .pubs ol{
+      margin: 10px 0 0;
+      padding-left: 18px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    .pubs li{ margin: 0 0 10px; }
+    .citation-title{ color: var(--text); font-weight: 600; }
+
+    .footer{
+      margin-top: 36px;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+      display:flex;
+      flex-wrap:wrap;
+      gap: 10px 18px;
+      align-items:center;
+      justify-content:space-between;
+      color: var(--muted);
+      font-size: 12px;
+    }
+  </style>
+</head>
+
+<body class="min-h-screen bg-white text-slate-900 dark:bg-slate-950 dark:text-slate-50">
+  <!-- HEADER -->
+  <header class="sticky top-0 z-50 border-b border-slate-200/70 bg-white/80 backdrop-blur dark:border-slate-800/70 dark:bg-slate-950/80">
+    <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 md:py-5">
+      <a href="index.html#top" class="flex items-center gap-3">
+        <img
+          src="assets/DL-Logo.jpg"
+          alt="Dilworth Lab logo"
+          class="h-16 w-16 rounded-xl object-contain bg-white p-1 dark:bg-white"
+        />
+        <div class="leading-tight">
+          <div class="text-lg font-semibold tracking-tight md:text-xl">Dilworth Lab</div>
+          <div class="text-sm text-slate-600 dark:text-slate-300">Epigenetics • Stem Cells • Regeneration | UW–Madison</div>
+        </div>
+      </a>
+
+      <nav class="hidden items-center gap-6 md:flex">
+        <a class="text-base text-slate-700 hover:text-slate-900 dark:text-slate-200 dark:hover:text-white" href="index.html">Research</a>
+        <a class="text-base text-slate-700 hover:text-slate-900 dark:text-slate-200 dark:hover:text-white" href="epigenetics.html">Epigenetics</a>
+        <a class="text-base font-semibold text-slate-900 dark:text-white" href="team.html">Team</a>
+        <a class="text-base text-slate-700 hover:text-slate-900 dark:text-slate-200 dark:hover:text-white" href="publications.html">Publications</a>
+        <a class="text-base text-slate-700 hover:text-slate-900 dark:text-slate-200 dark:hover:text-white" href="links.html">Links</a>
+        <a class="text-base text-slate-700 hover:text-slate-900 dark:text-slate-200 dark:hover:text-white" href="team.html#join">Join</a>
+        <a class="text-base text-slate-700 hover:text-slate-900 dark:text-slate-200 dark:hover:text-white" href="team.html#contact">Contact</a>
+      </nav>
+
+      <div class="flex items-center gap-3">
+        <button
+          id="themeBtn"
+          class="rounded-xl border border-slate-200 px-4 py-2 text-base hover:bg-slate-50 dark:border-slate-800 dark:hover:bg-slate-900"
+          aria-label="Toggle dark mode"
+          type="button">
+          <span id="themeIcon" aria-hidden="true">🌙</span>
+        </button>
+
+        <button
+          id="menuToggle"
+          class="ml-1 inline-flex items-center justify-center rounded-lg p-2 text-slate-700 hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-slate-400 md:hidden dark:text-slate-200 dark:hover:bg-slate-900"
+          aria-label="Toggle navigation menu"
+          aria-expanded="false"
+          type="button">
+          <svg id="menuIconOpen" class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+          <svg id="menuIconClose" class="hidden h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 6l12 12M6 18L18 6" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <nav
+      id="mobileMenu"
+      class="hidden border-t border-slate-200 bg-white/95 px-4 pb-4 pt-2 text-base md:hidden dark:border-slate-800 dark:bg-slate-950/95">
+      <div class="mx-auto flex max-w-6xl flex-col gap-2">
+        <a class="text-slate-700 dark:text-slate-200" href="index.html">Research</a>
+        <a class="text-slate-700 dark:text-slate-200" href="epigenetics.html">Epigenetics</a>
+        <a class="font-semibold text-slate-900 dark:text-white" href="team.html">Team</a>
+        <a class="text-slate-700 dark:text-slate-200" href="publications.html">Publications</a>
+        <a class="text-slate-700 dark:text-slate-200" href="links.html">Links</a>
+        <a class="text-slate-700 dark:text-slate-200" href="team.html#join">Join</a>
+        <a class="text-slate-700 dark:text-slate-200" href="team.html#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- CONTENT -->
+  <main class="wrap">
+    <!-- Heading ABOVE photo -->
+    <section class="profile-heading">
+      <h2 class="name-title">Adity Gupta — Postdoctoral Fellow</h2>
+      <h3 class="subtitle">
+       PhD, Central Drug Research Institute (Lucknow, India).
+      </h3>
+    </section>
+
+    <!-- Photo + Project (project starts at same height as photo; 9-width project column) -->
+    <section class="profile-grid">
+      <div class="photo-col">
+        <div class="headshot">
+          <img
+            src="assets/people/adity-gupta.jpg"
+            alt="Adity Gupta"
+            loading="lazy"
+            onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;260&quot; height=&quot;260&quot;><rect width=&quot;100%&quot; height=&quot;100%&quot; rx=&quot;18&quot; fill=&quot;%23111827&quot;/><text x=&quot;50%&quot; y=&quot;54%&quot; text-anchor=&quot;middle&quot; dominant-baseline=&quot;middle&quot; font-family=&quot;system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial&quot; font-size=&quot;56&quot; fill=&quot;%23ffffff&quot;>AG</text></svg>';"
+          />
+        </div>
+      </div>
+
+      <div class="project-col">
+        <div class="card">
+          <p>
+            <strong>Project Title:</strong>
+            <span style="color: var(--text); font-weight: 600;">
+              “Characterizing the role of the epigenetic enzyme JMJD3 in modulating the inflammatory response to injury during muscle regeneration.”
+            </span>
+          </p>
+
+          <p style="margin-top:12px;">
+            During muscle regeneration, satellite cells move through a sequence of tightly regulated cell-fate changes to repair damaged fibers.
+            Each transition requires a precise shift in which genes are active, while proliferation also depends on a form of “cellular memory”
+            that preserves key programs in progenitors. Adity is exploring how <strong>JMJD3</strong> contributes to these transitions by tuning
+            inflammatory gene programs. Understanding how epigenetic enzymes modulate inflammation during regeneration may reveal strategies to
+            improve repair in disease and aging.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Publications (12 width) then Patent (12 width) underneath -->
+    <section class="stack">
+      <div class="card pubs">
+        <h2 class="section-title">Research publications</h2>
+        <ol>
+          <li>
+            Gupta A, Kumar A, Singh N, Patel M, Studitsky VM, Zhang KYJ, Akhtar MS.
+            <span class="citation-title">The Ser7 of RNA Pol II-CTD influences the recruitment of Cdc73 for mRNA transcription.</span>
+            <em>Int J Biol Macromol.</em> 2023 Nov 8;254(Pt 2):127881.
+          </li>
+          <li>
+            Gupta A, Kumar A, Singh N, Sudarshan N, Studitsky VM, Zhang KYJ, Akhtar MS.
+            <span class="citation-title">The Saccharomyces cerevisiae SR protein Npl3 interacts with hyperphosphorylated CTD of RNA Polymerase II.</span>
+            <em>Int J Biol Macromol.</em> 2023 Oct 18;253(Pt 7):127541.
+          </li>
+          <li>
+            Khan A, Gupta A, Singh P, Mishra AK, Ranjan RK, Srivastava A.
+            <span class="citation-title">Siderophore-assisted cadmium hyperaccumulation in Bacillus subtilis.</span>
+            <em>Int Microbiol.</em> 2020;23(2):277–286.
+          </li>
+          <li>
+            Gupta A, Singh A, Singh N, Ansari H, Studitsky VM, Akhtar MS.
+            <span class="citation-title">Cdc5 Phosphorylates the Ser7 of RNA Polymerase II CTD during the mitotic transcription</span>
+            (manuscript in preparation).
+          </li>
+          <li>
+            Sudarshan N, Asalam M, Kumar A, Singh N, Gupta A, De I, Singh SK, Zhang KY, Akhtar MS.
+            <span class="citation-title">The Ser7 phosphorylation of RNA polymerase II-CTD is required for the recruitment of E3 ubiquitin ligase Asr1 and subtelomeric gene silencing.</span>
+            <em>J. Biol. Chem.</em> 2025 Jun 11:110365.
+          </li>
+        </ol>
+      </div>
+
+      <div class="card">
+        <h2 class="section-title">Patents</h2>
+        <p>
+          <span class="citation-title">ANTIMICROBIAL PEPTIDE AND ITS COMPOSITION THEREOF.</span><br />
+          Patent application number: <strong>202411062020</strong>.
+        </p>
+      </div>
+    </section>
+
+    <div class="footer">
+      <div>© <span id="year"></span> Dilworth Lab. All rights reserved.</div>
+      <div><a href="team.html" style="text-decoration: underline; text-underline-offset: 4px;">← Back to Team</a></div>
+    </div>
+  </main>
+
+  <script>
+    const root = document.documentElement;
+    const themeBtn = document.getElementById("themeBtn");
+    const themeIcon = document.getElementById("themeIcon");
+    const year = document.getElementById("year");
+
+    const menuToggle = document.getElementById("menuToggle");
+    const mobileMenu = document.getElementById("mobileMenu");
+    const menuIconOpen = document.getElementById("menuIconOpen");
+    const menuIconClose = document.getElementById("menuIconClose");
+
+    if (year) year.textContent = new Date().getFullYear();
+
+    function applyTheme(mode) {
+      const isDark = mode === "dark";
+      root.classList.toggle("dark", isDark);
+      if (themeIcon) themeIcon.textContent = isDark ? "☀️" : "🌙";
+      localStorage.setItem("theme", mode);
+    }
+
+    // initialize icon from current class (set by early script)
+    applyTheme(root.classList.contains("dark") ? "dark" : "light");
+
+    if (themeBtn) {
+      themeBtn.addEventListener("click", () => {
+        applyTheme(root.classList.contains("dark") ? "light" : "dark");
+      });
+    }
+
+    // Mobile menu toggle
+    if (menuToggle && mobileMenu && menuIconOpen && menuIconClose) {
+      menuToggle.addEventListener("click", () => {
+        const isOpen = !mobileMenu.classList.contains("hidden");
+        mobileMenu.classList.toggle("hidden", isOpen);
+        menuIconOpen.classList.toggle("hidden", !isOpen);
+        menuIconClose.classList.toggle("hidden", isOpen);
+        menuToggle.setAttribute("aria-expanded", String(!isOpen));
+      });
+    }
+  </script>
+</body>
+</html>
