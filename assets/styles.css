@@ -433,3 +433,13 @@ h1{
     width: 96px;
   }
 }
+/* Make linked names look exactly like non-linked names */
+.person-name-link{
+  color: inherit;
+  text-decoration: none;
+  font: inherit;           /* inherits size/weight from .person-name */
+}
+.person-name-link:hover{
+  text-decoration: underline;  /* optional */
+  text-underline-offset: 3px;
+}
