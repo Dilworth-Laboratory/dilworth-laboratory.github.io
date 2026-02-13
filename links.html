@@ -211,6 +211,15 @@
       color: var(--muted);
       font-size: 12px;
     }
+
+    .conference-image img { width: 100%; height: 200px; object-fit: cover; }
+    @media (min-width: 768px) {
+    .conference-image { height: 250px; }
+    }
+    @media (min-width: 1024px) {
+    .conference-image { height: 250px; }
+    }
+
   </style>
 </head>
 
@@ -328,21 +337,18 @@
           <div class="badge">Meeting</div>
         </div>
 
-        <div class="conference-gallery">
-          <figure class="conference-image">
-            <img src="assets/AegeanTraineeAwards.jpg"
-                 alt="Aegean Conference Trainee Award Winners 2025"
-                 loading="lazy" />
-            <figcaption>Aegean Conference Trainee Award Winners 2025</figcaption>
-          </figure>
-
-          <figure class="conference-image">
-            <img src="assets/AegeanGroup.jpeg"
-                 alt="Aegean Conference Attendees at the 2025 Meeting in Sissi"
-                 loading="lazy" />
-            <figcaption>Aegean Conference Attendees at the 2025 Meeting in Sissi</figcaption>
-          </figure>
+        <div class="link-item">
+          <div class="meta">
+            <div class="name">
+              <a href="https://events.btci.org/symposium/stem-cell/" target="_blank" rel="noreferrer">
+                Wisconsin Stem Cell Conference ↗
+              </a>
+            </div>
+            <div class="desc">Annual Conference of the University of Wisconsin Stem Cell and Regenerative Medicine Center.</div>
+          </div>
+          <div class="badge">Meeting</div>
         </div>
+
       </div>
 
       <!-- Societies -->
@@ -371,6 +377,25 @@
             <div class="desc">International community for regenerative biology across tissues and model systems.</div>
           </div>
           <div class="badge">Society</div>
+        </div>
+        
+      </div>
+
+      <div class="links-card" style="grid-column: span 12;">
+        <div class="conference-gallery">
+          <figure class="conference-image">
+            <img src="assets/AegeanTraineeAwards.jpg"
+                  alt="Aegean Conference Trainee Award Winners 2025"
+                  loading="lazy" />
+            <figcaption>Aegean Conference Trainee Award Winners 2025</figcaption>
+          </figure>
+
+          <figure class="conference-image">
+            <img src="assets/AegeanGroup.jpeg"
+                  alt="Aegean Conference Attendees at the 2025 Meeting in Sissi"
+                  loading="lazy" />
+            <figcaption>Aegean Conference Attendees at the 2025 Meeting in Sissi</figcaption>
+          </figure>
         </div>
       </div>
 
